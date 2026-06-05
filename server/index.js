@@ -302,6 +302,10 @@ app.post("/api/analyze", async (request, response) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`GitHub Daily Radar API listening on http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`GitHub Daily Radar API listening on http://localhost:${port}`);
+  });
+}
+
+export default app;
